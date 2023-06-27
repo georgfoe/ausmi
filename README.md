@@ -18,6 +18,15 @@ This project is a fork of the original [ausmi](https://github.com/marciojmo/ausm
 4. Set the `OPENAI_TOKEN` and `TELEGRAM_TOKEN` environment variables to your OpenAI and Telegram API keys.
 5. Start the bot: `python bot.py`
 
+## Docker
+
+You can also run the bot in a Docker container. Here's how:
+
+1. Build the Docker image: `docker build -t ausmi .`
+2. Run the Docker container: `docker run -e OPENAI_TOKEN=<your_openai_token> -e TELEGRAM_TOKEN=<your_telegram_token> ausmi`
+
+Replace `<your_openai_token>` and `<your_telegram_token>` with your OpenAI and Telegram API keys.
+
 ## Usage
 
 After starting the bot, you can chat with it on Telegram. You can send it text messages or voice messages, and it will respond accordingly.
