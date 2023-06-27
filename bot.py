@@ -47,7 +47,7 @@ def convert_text_to_speech(text, language_code='pt'):
 
 def convert_speech_to_text(audio_filepath):
     with open(audio_filepath, "rb") as audio:
-        transcript = openai.Audio.transcribe("whisper-1", audio)
+        transcript = openai.Audio.transcribe("base", audio)
         return transcript["text"]
 
 
