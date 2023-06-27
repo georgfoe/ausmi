@@ -33,7 +33,7 @@ def convert_text_to_speech(text, language_code='pt'):
     mp3_output_filepath = os.path.join(AUDIOS_DIR, f"{generate_unique_name()}.mp3")
     
     # Initialize the TTS
-    tts = TTS(model_name="tts_models/en/ljspeech/tacotron2-DDC", progress_bar=False, gpu=False)
+    tts = TTS(model_name="tts_models/de/thorsten/vits", progress_bar=False, gpu=False)
 
     # Convert text to speech and save it to a WAV file
     tts.tts_to_file(text=text, file_path=wav_output_filepath)
