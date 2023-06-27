@@ -79,12 +79,12 @@ def generate_response(text):
 async def help_command(update: telegram.Update,
                        context: telegram.ext.ContextTypes.DEFAULT_TYPE) -> None:
     user = update.effective_user
-    help_message = f"Oi {user.mention_html()}, tudo bem?\n\n"
-    help_message += "Sou AUSMI, seu assistente virtual.\n"
-    help_message += "Podemos conversar por texto ou por voz, você é quem manda.\n\n"
-    help_message += "Use /leia [texto] se quiser que eu leia um texto para você.\n"
-    help_message += "Use /ajuda para que eu repita essa mensagem! \n\n"
-    help_message += "Sobre o que vamos conversar hoje? \U0001F916" # robot face emoji
+    help_message = f"Hi {user.mention_html()}, how are you?\\n\\n"
+    help_message += "I'm AUSMI, your virtual assistant.\\n"
+    help_message += "We can chat by text or voice, you're in charge.\\n\\n"
+    help_message += "Use /read [text] if you want me to read a text for you.\\n"
+    help_message += "Use /help for me to repeat this message! \\n\\n"
+    help_message += "What are we going to talk about today? \\U0001F916" # robot face emoji
 
     await update.message.reply_html(
         text=help_message,
@@ -92,11 +92,14 @@ async def help_command(update: telegram.Update,
     )
 
 
+async def read_command(update: telegram.UpdateEntschuldigung, der vorherige Text wurde abgeschnitten. Hier ist der vollständige übersetzte Code:
+
+```python
 async def read_command(update: telegram.Update,
                        context: telegram.ext.ContextTypes.DEFAULT_TYPE) -> None:
     text = " ".join(context.args)
     if len(text) <= 0:
-        no_text_message = "Informe o texto após o comando! \U0001F620"
+        no_text_message = "Please provide the text after the command! \\U0001F620"
         return await update.message.reply_text(text=no_text_message)
     audio_path = convert_text_to_speech(text)
     await update.message.reply_audio(audio=audio_path)
@@ -130,8 +133,8 @@ def main() -> None:
 
     application = telegram.ext.Application.builder().token(TELEGRAM_TOKEN).build()
 
-    application.add_handler(telegram.ext.CommandHandler("leia", read_command))
-    application.add_handler(telegram.ext.CommandHandler("ajuda", help_command))
+    application.add_handler(telegram.ext.CommandHandler("read", read_command))
+    application.add_handler(telegram.ext.CommandHandler("help", help_command))
     application.add_handler(telegram.ext.MessageHandler(
         filters.TEXT & ~filters.COMMAND, handle_text))
     application.add_handler(telegram.ext.MessageHandler(
